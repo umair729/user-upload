@@ -1,6 +1,12 @@
 <?php
 
-$options = getopt("f:c:h:d:u:p:r:");
+$options = getopt("f:c:h:d:u:p:r:i");
+
+if(isset($options["i"]))
+{
+    help();
+    die();
+}
 
 if(isset($options["f"]))
 {
@@ -97,10 +103,15 @@ function sqlQuery($fname, $sname, $email)
 
 function help()
 {
-    print "Please follow these commands to run the program\n...";
-    print "Please follow these commands to run the program\n...";
-    print "Please follow these commands to run the program\n...";
-    print "Please follow these commands to run the program\n...";
+    print "Please follow these commands to run the program...\n";
+    print "-f parameter for CSV FILE, -c parameter for Create Table\n-u parameter for DB Username, -p parameter for DB Password\n-r parameter for Dry Run and -h parameter for HELP\n";
+    print "\n";
+    print "To run the Program please use this Command:\nuser_upload.php -f users.csv -h hostname -d DBNAME -u DBusername -p DBpassword\n";
+    print "\n";
+    print "To just create table please use this Command:\nuser_upload.php -c create-table -h hostname -d DBNAME -u DBusername -p DBpassword\n";
+    print "\n";
+    print "For Dry Run, Please add -r parameter in above command like -r dry-run\n";
+    
 }
 
 fclose($h);
