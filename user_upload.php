@@ -1,7 +1,18 @@
 <?php
 
-$options = getopt("f:c:h:d:u:p:");
-$csvFile = $options["f"];
+$options = getopt("f:c:h:d:u:p:r:");
+
+if(isset($options["f"]))
+{
+    $csvFile = $options["f"];
+    $extension = end(explode('.', $csvFile));
+
+    if($extension != 'csv')
+    {
+       echo 'This is not a valid CSV file';
+       die();
+    }
+}
 
 $dbhost = '';
 
@@ -54,6 +65,11 @@ $h = fopen($csvFile, "r");
 $flag = 0;
 while ((($emapData = fgetcsv($h, 1000, ",")) !== FALSE) && $emapData[0]) 
 {
+    if(isset($options["r"]))
+    {
+        print "Data did not enter into database because of DRY RUN";
+        break;
+    }
     if($flag == 0)
     {
         $flag++;
@@ -77,6 +93,14 @@ function sqlQuery($fname, $sname, $email)
 {
     $sql = "INSERT into users(name,surname,email) values('$fname','$sname','$email')";
     mysql_query($sql);
+}
+
+function help()
+{
+    print "Please follow these commands to run the program\n...";
+    print "Please follow these commands to run the program\n...";
+    print "Please follow these commands to run the program\n...";
+    print "Please follow these commands to run the program\n...";
 }
 
 fclose($h);
