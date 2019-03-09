@@ -1,4 +1,7 @@
 # user-upload
+There are no libraries or framework have been used in this program.
+Whole program is developed under core PHP programming.
+
 Please follow these commands to run the user_upload.php program...
 
 -f parameter for CSV FILE, -c parameter for Create Table, -u parameter for DB Username,
