@@ -39,8 +39,7 @@ else
 
 $db = $options["d"];
 $username = $options["u"];
-$password = isset($options["p"]);
-$password = '';
+
 connectDb($dbhost, $username, $password, $db);
 
 function connectDb($host, $name, $pass, $dbase)
